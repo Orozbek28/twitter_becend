@@ -1,15 +1,16 @@
-import environ
+
+
 import os
 
 from pathlib import Path
 
-env = environ.Env(
 
-)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+env = os.environ.get
+
 
 SECRET_KEY = env('SECRET_KEY')
 
@@ -85,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DB_NAME'),
         'HOST': env('DB_HOST'),
-        'PORT': env('DB_ROOT'),
+        'PORT': env('DB_PORT'),
         'USER': env('DB_USER'),
         'PASSWORD': env('DB_PASSWORD')
     }
